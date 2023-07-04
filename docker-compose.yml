@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  mysql-db:
+    image: mysql:5.7.30
+    container_name: mysql-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=tsroot
+      - MYSQL_PASSWORD=tsroot
+    ports:
+      - 3306:3306
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512m

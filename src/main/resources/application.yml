@@ -1,0 +1,18 @@
+spring:
+  security:
+    user:
+      name: madmin
+      password: 123@!
+      roles: ADMIN
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    drop-first: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/security
+    username: tsroot
+    password: tsroot
+
+springdoc:
+  swagger-ui:
+    path: api-docs

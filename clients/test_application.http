@@ -1,0 +1,8 @@
+###
+GET http://localhost:8080/app/hello
+Authorization: Basic Um9tYW46MTIzNA==
+
+###
+GET http://localhost:8080/app/user
+Authorization: Basic Um9tYW46MTIzNA==
+
