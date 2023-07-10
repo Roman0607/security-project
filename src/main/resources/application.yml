@@ -1,9 +1,4 @@
 spring:
-  security:
-    user:
-      name: madmin
-      password: 123@!
-      roles: ADMIN
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
     drop-first: false
@@ -16,3 +11,9 @@ spring:
 springdoc:
   swagger-ui:
     path: api-docs
+
+service:
+  user:
+    name: madmin
+    password: 1234
+    roles: USER

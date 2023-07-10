@@ -3,6 +3,7 @@ package com.example.securityproject.controllers;
 import com.example.securityproject.models.User;
 import com.example.securityproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,9 @@ public class AppController {
     }
 
     @GetMapping("/user")
-    public @ResponseBody User sayUser(@RequestBody User user) {
+    public @ResponseBody User saveUser(@RequestBody User user) {
+        String loggedInUserName = SecurityContextHolder.getContext().getAuthentication().getName();
+        user.setCreatedBy(loggedInUserName);
         return userService.save(user);
     }
 }
