@@ -23,6 +23,7 @@ public class UserService {
     public User save(User user) {
         String userPassword = user.getPassword();
         user.setPassword(encoder.encode(userPassword));
-        return userRepository.save(user);
+        return userRepository.findUserByUserName(user.getUserName())
+                .orElseGet(() -> userRepository.save(user));
     }
 }

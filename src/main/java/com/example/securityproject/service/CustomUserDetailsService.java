@@ -1,6 +1,7 @@
 package com.example.securityproject.service;
 
 import com.example.securityproject.models.User;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,12 +14,12 @@ import java.util.Optional;
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserService userService;
 
-
     public CustomUserDetailsService(UserService userService) {
         this.userService = userService;
     }
 
     @Override
+    @CachePut(value = "session")
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = userService.findByName(username);
 
